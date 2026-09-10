@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+.pnpm-store/
+.codex/
+dist/
+minitool-dist/
+outputs/
+*.zip
+

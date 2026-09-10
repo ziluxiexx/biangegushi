@@ -1,0 +1,317 @@
+:root {
+  color-scheme: light;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  color: oklch(0.145 0.006 70);
+  background: oklch(0.955 0.012 82);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --bg: oklch(0.955 0.012 82);
+  --paper: oklch(0.985 0.006 82);
+  --ink: oklch(0.145 0.006 70);
+  --ink-secondary: oklch(0.43 0.008 70);
+  --line: oklch(0.7 0.009 76);
+  --focus: oklch(0.59 0.19 254);
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+}
+
+* { box-sizing: border-box; }
+
+html { min-width: 20rem; background: var(--bg); touch-action: manipulation; }
+
+body { margin: 0; min-width: 20rem; min-height: 100vh; background: var(--bg); -webkit-touch-callout: none; }
+
+button, input { font: inherit; }
+
+button { -webkit-tap-highlight-color: transparent; }
+
+.app { min-height: var(--viewport-height, 100svh); }
+
+.shell {
+  width: min(100%, 35rem);
+  min-height: var(--viewport-height, 100svh);
+  margin: 0 auto;
+  padding: max(1.5rem, var(--safe-area-inset-top, env(safe-area-inset-top, 0px))) max(1.5rem, var(--safe-area-inset-right, env(safe-area-inset-right, 0px))) max(1.5rem, var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px))) max(1.5rem, var(--safe-area-inset-left, env(safe-area-inset-left, 0px)));
+}
+
+.screen { animation: screen-in 220ms cubic-bezier(.22, 1, .36, 1) both; }
+
+.home, .ready {
+  min-height: calc(var(--viewport-height, 100svh) - 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3xl);
+  text-align: center;
+}
+
+.home h1 {
+  margin: 0;
+  font-size: 3rem;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.home p {
+  margin: var(--space-md) 0 0;
+  color: var(--ink-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.primary-button, .text-button, .restart-button {
+  min-height: 3rem;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  transition: transform 160ms cubic-bezier(.22, 1, .36, 1), background-color 160ms ease, color 160ms ease;
+}
+
+.primary-button {
+  min-width: 10.5rem;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.primary-button--wide { min-width: 13rem; }
+
+.primary-button:hover { background: oklch(0.23 0.006 70); }
+.primary-button:active, .text-button:active, .restart-button:active { transform: scale(0.98); }
+
+button:focus-visible, input:focus-visible {
+  outline: 0.1875rem solid var(--focus);
+  outline-offset: 0.25rem;
+}
+
+.question {
+  min-height: calc(var(--viewport-height, 100svh) - 3rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.progress {
+  margin: 2.75rem 0 0;
+  color: var(--ink);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.progress span { color: var(--line); padding: 0 var(--space-xs); }
+
+.question form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-2xl) 0 12vh;
+}
+
+.question label {
+  display: block;
+  margin-bottom: var(--space-xl);
+  font-size: 2rem;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  font-weight: 650;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.question input {
+  width: 100%;
+  height: 3.5rem;
+  padding: 0 0 0.5rem;
+  border: 0;
+  border-bottom: 0.125rem solid var(--ink);
+  border-radius: 0;
+  outline-offset: 0.375rem;
+  background: transparent;
+  color: var(--ink);
+  font-size: 1.25rem;
+  text-align: center;
+  caret-color: var(--focus);
+}
+
+.question input::placeholder { color: oklch(0.44 0.006 70); opacity: 1; }
+.question input[aria-invalid="true"] { border-bottom-color: oklch(0.48 0.17 28); }
+
+.error {
+  min-height: 1.25rem;
+  margin: var(--space-sm) 0 var(--space-lg);
+  color: oklch(0.42 0.16 28);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.text-button {
+  padding: 0.5rem 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.text-button:hover { color: var(--ink-secondary); }
+.text-button span, .restart-button span { display: inline-block; margin-left: 0.25rem; }
+
+.safety-note {
+  max-width: 29rem;
+  margin: 0 auto;
+  transform: translateY(-0.5rem);
+  color: var(--ink-secondary);
+  font-size: 0.75rem;
+  line-height: 1.65;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.ready h1 {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.app--reveal .shell {
+  width: min(100%, 39rem);
+  padding-left: max(1rem, var(--safe-area-inset-left, env(safe-area-inset-left, 0px)));
+  padding-right: max(1rem, var(--safe-area-inset-right, env(safe-area-inset-right, 0px)));
+}
+
+.reveal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+  padding: var(--space-md) 0 var(--space-3xl);
+}
+
+.receipt {
+  position: relative;
+  width: min(100%, 27.5rem);
+  min-height: 36rem;
+  margin: 0;
+  padding: var(--space-2xl) clamp(1.5rem, 7vw, 3rem) var(--space-3xl);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 0.25rem 0.5rem oklch(0.2 0.01 70 / 0.13);
+  font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "PingFang SC", monospace;
+}
+
+.receipt::before, .receipt::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0.75rem;
+  background: var(--paper);
+  clip-path: polygon(0 50%, 2% 0, 4% 50%, 6% 0, 8% 50%, 10% 0, 12% 50%, 14% 0, 16% 50%, 18% 0, 20% 50%, 22% 0, 24% 50%, 26% 0, 28% 50%, 30% 0, 32% 50%, 34% 0, 36% 50%, 38% 0, 40% 50%, 42% 0, 44% 50%, 46% 0, 48% 50%, 50% 0, 52% 50%, 54% 0, 56% 50%, 58% 0, 60% 50%, 62% 0, 64% 50%, 66% 0, 68% 50%, 70% 0, 72% 50%, 74% 0, 76% 50%, 78% 0, 80% 50%, 82% 0, 84% 50%, 86% 0, 88% 50%, 90% 0, 92% 50%, 94% 0, 96% 50%, 98% 0, 100% 50%, 100% 100%, 0 100%);
+}
+
+.receipt::before { top: -0.375rem; }
+.receipt::after { bottom: -0.375rem; transform: rotate(180deg); }
+
+.receipt__header { text-align: center; }
+
+.receipt__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+  color: var(--ink-secondary);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.receipt__rule { margin: var(--space-lg) 0; border-top: 1px dashed var(--line); }
+
+.receipt h1 {
+  margin: var(--space-xl) 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", sans-serif;
+  font-size: 1.75rem;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+
+.story-copy {
+  min-height: 19rem;
+  margin: var(--space-xl) 0 0;
+  white-space: pre-wrap;
+  font-size: 1rem;
+  line-height: 2;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.cursor { animation: blink 900ms steps(1, end) infinite; }
+
+.receipt__footer {
+  margin-top: var(--space-2xl);
+  color: var(--ink-secondary);
+  font-size: 0.75rem;
+  text-align: center;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: opacity 220ms ease-out;
+}
+
+.receipt__footer.is-visible { opacity: 1; }
+
+.restart-button {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink-secondary);
+  font-size: 0.875rem;
+}
+
+.restart-button:hover { color: var(--ink); }
+
+.reveal-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.save-button { min-width: 10rem; }
+
+.save-status {
+  min-height: 1.25rem;
+  margin: 0;
+  color: var(--ink-secondary);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@keyframes screen-in { from { opacity: 0; transform: translateY(0.5rem); } }
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (min-width: 48rem) {
+  .shell { padding-block: var(--space-2xl); }
+  .home, .ready, .question { min-height: calc(var(--viewport-height, 100svh) - 6rem); }
+  .receipt { padding-block: var(--space-3xl); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .cursor { display: none; }
+}
