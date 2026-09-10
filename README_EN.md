@@ -4,6 +4,8 @@
 
 A lightweight, mobile-first fill-in-the-blank storytelling game built for delightfully unexpected results. It is designed for the Xiaohongshu Mini Tool container and also runs as a standalone web app.
 
+**Development:** This project was built and iterated with Codex. Multiple versions were developed, tested, and released through the REDnote Mini Tool platform before this GitHub repository was created. As a result, the number of commits in this repository does not represent the project's full development and iteration history.
+
 ## How it works
 
 Players answer one short prompt at a time without seeing the full story. Once every blank has been filled, the game inserts the answers into a randomly selected story and reveals the result as a receipt-style printout.
